@@ -30,4 +30,3 @@ function showReminders(){
     })
 }
 
-// znam deka ne e dobra praksa da se vlecat varijabli od globalen vo funkcionalen scope no ne znaev kako na drug nacin da go napravam da raboti pa dokolku moze da mi pomognete vo toa, blagodaram od napred =).
