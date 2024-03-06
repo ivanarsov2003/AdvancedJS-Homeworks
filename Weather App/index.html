@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <button @click="view = 'statistics'">View Weather Statistics</button>
+    <button @click="view = 'hourly'">View Hourly Weather</button>
+
+    <div v-if="view === 'statistics'">
+      <!-- Weather statistics view -->
+      <h2>Weather Statistics</h2>
+      <p>Average Temperature: {{ averageTemperature }}°C</p>
+      <p>Highest Temperature: {{ highestTemperature }}°C</p>
+      <p>Lowest Temperature: {{ lowestTemperature }}°C</p>
+      <p>Average Humidity: {{ averageHumidity }}%</p>
+      <p>Highest Humidity: {{ highestHumidity }}%</p>
+      <p>Lowest Humidity: {{ lowestHumidity }}%</p>
+      <p>Warmest Time: {{ warmestTime }}</p>
+      <p>Coldest Time: {{ coldestTime }}</p>
+    </div>
+
+    <div v-if="view === 'hourly'">
+      <!-- Hourly weather view -->
+      <h2>Hourly Weather Stats</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Icon</th>
+            <th>Description</th>
+            <th>Date & Time</th>
+            <th>Temperature (°C)</th>
+            <th>Humidity (%)</th>
+            <th>Wind Speed (m/s)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(hour, index) in hourlyWeather" :key="index">
+            <td>{{ hour.icon }}</td>
+            <td>{{ hour.description }}</td>
+            <td>{{ hour.dateTime }}</td>
+            <td>{{ hour.temperature }}</td>
+            <td>{{ hour.humidity }}</td>
+            <td>{{ hour.windSpeed }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
